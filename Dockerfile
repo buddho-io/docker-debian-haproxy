@@ -20,7 +20,9 @@ RUN curl -L https://github.com/kelseyhightower/confd/releases/download/v0.6.3/co
 # Add HAProxy default config
 ADD etc/haproxy/haproxy.cfg /opt/etc/haproxy/haproxy.cfg
 
-RUN mkdir -p /var/lib/haproxy && chown -R haproxy:haproxy /var/lib/haproxy
+RUN mkdir -p /var/lib/haproxy && \
+    chown -R haproxy:haproxy /var/lib/haproxy && \
+    chmod 600 /opt/etc/haproxy/haproxy.cfg
 
 EXPOSE 80
 EXPOSE 443
